@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe Jekyll::ImportmapTag do
+rspec.describe jekyll::importmaptag do
+    let(:output) {
+        liquid::template.parse("{% importmap %}").render
+    }
+
     it 'renders' do
-        expect(Jekyll::ImportmapTag.new('importmap', 'h', 'g').render(nil)).to eq(false)
+        expect(output).to eq("proof of concept")
     end
+
 end
