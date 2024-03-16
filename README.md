@@ -1,4 +1,4 @@
-<h1>CURRENTLY IN DEVELOPMENT</h1>
+<h1 style="color:red;">CURRENTLY IN DEVELOPMENT</h1>
 
 # jekyll-importmaps
 A plugin that implementing importmaps for jekyll
