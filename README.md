@@ -2,7 +2,7 @@
 A plugin that implementing importmaps for jekyll
 
 ## How it works
-Heavily borrowed from the `importmap-rails` gem, minus the `rails` parts.
+Heavily borrowed from the `importmap-rails` gem (basically copied), minus the `rails` parts.
 
 ## Usage
 To be continued...

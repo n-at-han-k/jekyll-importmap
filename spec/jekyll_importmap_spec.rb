@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-rspec.describe jekyll::importmaptag do
+RSpec.describe Jekyll::ImportmapTag do
     let(:output) {
-        liquid::template.parse("{% importmap %}").render
+        Liquid::Template.parse("{% importmap %}").render
     }
 
     it 'renders' do
