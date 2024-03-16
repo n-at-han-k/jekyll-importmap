@@ -7,6 +7,7 @@ Heavily borrowed from the `importmap-rails` gem (basically copied), minus the `r
 ## Usage
 To be continued...
 
+### Setup
 Add to `Gemfile` via bundler
 ```sh
 bundle add jekyll-importmap
@@ -27,6 +28,8 @@ Add to your layout
 ...
 ```
 
+### Importmap config
+To be continued...
 
 ## Contributing
 You're actively encouraged to create issues and pull requests.
