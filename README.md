@@ -1,7 +1,7 @@
 
 ![#f03c15](https://placehold.co/600x50/ffffff/ff0000?text=CURRENTLY+IN+DEVELOPMENT)
 
-# jekyll-importmaps
+# jekyll-importmap
 A plugin that implementing importmaps for jekyll
 
 ## How it works
