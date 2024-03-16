@@ -6,7 +6,7 @@ require "importmap-rails"
 
 module Jekyll
     class ImportmapTag < Liquid::Tag
-        def initialize(tag_name, text, tokens)
+        def initialize(_tag_name, text, _tokens)
             super
         end
 
