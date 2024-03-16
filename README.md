@@ -6,6 +6,16 @@ Heavily borrowed from the `importmap-rails` gem (basically copied), minus the `r
 
 ## Usage
 To be continued...
+```sh
+bundle add jekyll-importmap
+```
+
+```yaml
+  plugins:
+    - jekyll-importmap
+```
+
+
 ```
 <html>
     <head>
