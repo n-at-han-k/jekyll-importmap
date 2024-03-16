@@ -40,7 +40,7 @@ module Jekyll::Importmap
             end
         end
         def to_json(cache_key: :json)
-            return 'nigger'
+            return 'example string'
             cache_as(cache_key) do
                 JSON.pretty_generate({"imports" => resolve_asset_paths(expanded_packages_and_directories, resolver: resolver)})
             end
