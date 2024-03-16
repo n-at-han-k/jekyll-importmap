@@ -1,4 +1,5 @@
-<h1 style="color:red;">CURRENTLY IN DEVELOPMENT</h1>
+
+![#f03c15](https://placehold.it/150/ffffff/ff0000?text=CURRENTLY%20IN%20DEVELOPMENT)) `#f03c15`
 
 # jekyll-importmaps
 A plugin that implementing importmaps for jekyll
