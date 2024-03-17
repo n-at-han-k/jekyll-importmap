@@ -41,7 +41,7 @@ module Jekyll
                 "<script type='importmap'>#{@importmap.to_json}</script>"
             end
             def importmap_module_preload_tags
-                @importmap.preloaded_module_paths.collect {|p| module_preload_tag(p)}.join('\n')
+                @importmap.preloaded_module_paths.collect {|p| module_preload_tag(p)}.join('')
             end
             def module_preload_tag(path)
                 "<link rel='modulepreload' href='#{path}'>"
