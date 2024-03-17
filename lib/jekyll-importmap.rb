@@ -32,8 +32,8 @@ module Jekyll
                 [
                     inline_importmap_tags,
                     importmap_module_preload_tags,
-                    import_module_tag,
-                    es_module_shim_tag
+                    es_module_shim_tag,
+                    import_module_tag
                 ].join('')
             end
 
