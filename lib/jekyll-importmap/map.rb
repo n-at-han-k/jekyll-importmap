@@ -56,7 +56,13 @@ module Jekyll::Importmap
                 end.compact
             end
             def preloaded_resolved_asset_paths
-                preloaded_expanded_packages_and_directories
+                preloaded_expanded_packages_and_directories.transform_values do |mapped_file|
+                    begin
+                        mapped_file.resolved_path
+                    rescue => e
+                        raise e
+                    end
+                end
             end
 
             def expanded_packages_and_directories
