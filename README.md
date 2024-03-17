@@ -80,7 +80,7 @@ window.Stimulus   = application
 eagerLoadControllersFrom("controllers", application)
 ```
 
-#### assets/js/controllers/flatpickr-controller.js
+#### assets/js/controllers/flatpickr_controller.js
 ```javascript
 import { Controller } from "@hotwired/stimulus"
 import Flatpickr from 'stimulus-flatpickr'
