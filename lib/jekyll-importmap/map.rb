@@ -28,18 +28,15 @@ module Jekyll::Importmap
             self
         end
 
-        def pin(name, to: nil, preload: true)
+        def pin(name, to: nil, preload: false)
             @packages[name] = Jekyll::Importmap::MappedFile.new(name: name, path: to || "#{name}.js", preload: preload)
         end
-        def pin_all_from(dir, under: nil, to: nil, preload: true)
+        def pin_all_from(dir, under: nil, to: nil, preload: false)
             @directories[dir] = Jekyll::Importmap::MappedDir.new(dir: dir, under: under, path: to, preload: preload)
         end
 
         def preloaded_module_paths
-            resolve_asset_paths(
-                expanded_preloading_packages_and_directories,
-                resolver: @resolver
-            ).values
+            preloaded_resolved_asset_paths.values
         end
 
         def to_json
@@ -58,6 +55,10 @@ module Jekyll::Importmap
                     end
                 end.compact
             end
+            def preloaded_resolved_asset_paths
+                preloaded_expanded_packages_and_directories
+            end
+
             def expanded_packages_and_directories
                 @packages.dup.tap do |packages|
                     @directories.values.each do |mapped_directory|
@@ -65,6 +66,11 @@ module Jekyll::Importmap
                             packages[mapped_file.name] = mapped_file
                         end
                     end
+                end
+            end
+            def preloaded_expanded_packages_and_directories
+                expanded_packages_and_directories.select do |name, mapped_file|
+                    mapped_file.preload == true
                 end
             end
     end

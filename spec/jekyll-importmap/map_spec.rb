@@ -32,7 +32,7 @@ RSpec.describe Jekyll::Importmap::Map do
     end
 
     it '.preloaded_module_paths' do
-        #expect(true).to eq(false)
+        expect(importmap.preloaded_module_paths.length).to eq(1)
     end
 
     it '.to_json' do
