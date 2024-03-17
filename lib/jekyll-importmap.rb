@@ -47,7 +47,7 @@ module Jekyll
                 Array(paths).collect {|p| %(<link rel="modulepreload" href="#{p}">)}.join('\n')
             end
             def import_module_tag
-                imports = Array(@entry_points).collect {|e| %(import '#{e}')}.join('\n')
+                imports = Array(*@entry_point).collect {|e| %(import '#{e}')}.join('\n')
                 "<script type='module'>#{imports}</script>"
             end
             def es_module_shim_tag
