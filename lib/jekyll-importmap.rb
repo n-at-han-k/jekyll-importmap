@@ -11,12 +11,13 @@ module Jekyll
     module Importmap; end
 
     ES_MODULE_SHIM = "https://ga.jspm.io/npm:es-module-shims@1.8.3/dist/es-module-shims.js"
-    IMPORTMAP_PATH = "/importmap.rb"
+    IMPORTMAP_PATH = "importmap.rb"
 
     class ImportmapTag < Liquid::Tag
         def initialize(tag_name, text, tokens)
             super
-            root_path = Pathname.new(Jekyll.configuration['source'])
+            #root_path = Pathname.new(Jekyll.configuration['source']) + '/'
+            root_path = Dir.pwd + '/'
             @importmap = Jekyll::Importmap::Map.new.draw(root_path.join(IMPORTMAP_PATH))
             @entry_point = "application"
         end
