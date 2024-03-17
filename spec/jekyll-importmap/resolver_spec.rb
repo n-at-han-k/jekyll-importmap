@@ -9,6 +9,6 @@ RSpec.describe Jekyll::Importmap::Resolver do
     end
 
     it '#url' do
-        expect(resolver.url).to eq(url_with_port)
+        expect(resolver.url).to eq('https://' + url_with_port)
     end
 end
