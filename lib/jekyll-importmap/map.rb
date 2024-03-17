@@ -9,7 +9,7 @@ module Jekyll::Importmap
 
         def initialize
             @packages, @directories = {}, {}
-            @cache = {}
+            @resolver = Jekyll::Importmap::Resolver
         end
 
         def draw(path = nil, &block)
@@ -21,65 +21,51 @@ module Jekyll::Importmap
                 end
             elsif block_given?
                 instance_eval(&block)
+            else
+                raise InvalidFile, "You must provide a file path or a block to draw the importmap, given: #{path}"
             end
 
             self
         end
 
         def pin(name, to: nil, preload: true)
-            clear_cache
-            @packages[name] = MappedFile.new(name: name, path: to || "#{name}.js", preload: preload)
+            @packages[name] = Jekyll::Importmap::MappedFile.new(name: name, path: to || "#{name}.js", preload: preload)
         end
         def pin_all_from(dir, under: nil, to: nil, preload: true)
-            clear_cache
-            @directories[dir] = MappedDir.new(dir: dir, under: under, path: to, preload: preload)
+            @directories[dir] = Jekyll::Importmap::MappedDir.new(dir: dir, under: under, path: to, preload: preload)
         end
-        def preloaded_module_paths(resolver:, cache_key: preloaded_module_paths)
-            cache_as(cache_key) do
-                resolve_asset_paths(expanded_preloading_packages_and_directories, resolver: resolver).values
-            end
+
+        def preloaded_module_paths
+            resolve_asset_paths(
+                expanded_preloading_packages_and_directories,
+                resolver: @resolver
+            ).values
         end
-        def to_json(cache_key: :json)
-            return 'example string'
-            cache_as(cache_key) do
-                JSON.pretty_generate({"imports" => resolve_asset_paths(expanded_packages_and_directories, resolver: resolver)})
-            end
+
+        def to_json
+            JSON.pretty_generate({
+                "imports" => resolved_asset_paths
+            })
         end
 
         private
-            MappedFile = Struct.new(:name, :path, :preload, keyword_init: true)
-            MappedDir = Struct.new(:dir, :under, :path, :preload, keyword_init: true)
-
-            def resolve_asset_paths(paths, resolver:)
-                paths.transform_values do |mapping|
+            def resolved_asset_paths
+                expanded_packages_and_directories.transform_values do |mapped_file|
                     begin
-                        resolver.path_to_asset(mapping.path)
+                        mapped_file.resolved_path
                     rescue => e
-                        if rescuable_asset_error?(e)
-                            nil
-                        else
-                            raise e
-                        end
+                        raise e
                     end
                 end.compact
             end
             def expanded_packages_and_directories
-                @packages.dup.tap {|expanded| expand_directories_into expanded }
-            end
-            def expand_directories_into(paths)
-                @directories.values.each do |mapping|
+                @packages.dup.tap do |packages|
+                    @directories.values.each do |mapped_directory|
+                        mapped_directory.expanded_paths.each do |mapped_file|
+                            packages[mapped_file.name] = mapped_file
+                        end
+                    end
                 end
-            end
-            
-            def cache_as(key)
-                if result = @cache[key.to_s]
-                    result
-                else
-                    @cache[key.to_s] = yield
-                end
-            end
-            def clear_cache
-                @cache.clear
             end
     end
 end
