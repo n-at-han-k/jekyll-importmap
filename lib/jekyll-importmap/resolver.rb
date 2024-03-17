@@ -3,6 +3,7 @@ module Jekyll::Importmap
 
     class Resolver
         def self.path_to_asset(path)
+            return path if path.starts_with?('http') 
             self.url + JS_PATH + path
         end
 
