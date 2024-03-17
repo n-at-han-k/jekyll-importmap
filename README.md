@@ -45,7 +45,7 @@ pin 'application', to: 'assets/js/application.js'
 ```
 
 ### Example for StimulusJS
-##### importmap.rb
+#### importmap.rb
 ```ruby
 pin 'application', to: 'assets/js/application.js'
 pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js"
