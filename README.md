@@ -45,21 +45,21 @@ pin 'application', to: 'assets/js/application.js'
 ```
 
 ### Example for StimulusJS
+##### importmap.rb
 ```ruby
-# importmap.rb
 pin 'application', to: 'assets/js/application.js'
 pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js"
 pin "@hotwired/stimulus-loading", to: "assets/js/stimulus-loading.js", preload: true
 pin_all_from "assets/js/controllers", under: "controllers"
 ```
 
+#### assets/js/application.js
 ```javascript
-// assets/js/application.js
 import 'controllers'
 ```
 
+#### assets/js/controllers/index.js
 ```javascript
-// assets/js/controllers/index.js
 import { Application } from "@hotwired/stimulus"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 import Flatpickr from 'stimulus-flatpickr'
@@ -73,8 +73,8 @@ window.Stimulus   = application
 eagerLoadControllersFrom("controllers", application)
 ```
 
+#### assets/js/controllers/flatpickr-controller.js
 ```javascript
-// assets/js/controllers/flatpickr-controller.js
 import { Controller } from "@hotwired/stimulus"
 import Flatpickr from 'stimulus-flatpickr'
 
@@ -90,6 +90,12 @@ export default class extends Flatpickr {
 }
 ```
 
+#### assets/js/stimulus-loading.js
+```
+// content from https://github.com/hotwired/stimulus-rails/blob/ae4b675473b71fdf01530c8a6a3bb277d3388ee2/app/assets/javascripts/stimulus-loading.js
+```
+
+#### index.html
 ```html
 <div data-controller="flatpickr"></div>
 ```
