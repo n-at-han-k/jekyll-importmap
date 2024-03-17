@@ -10,7 +10,7 @@ module Jekyll::Importmap
             if Jekyll.configuration['url']
                 Jekyll.configuration['url']
             else
-                Jekyll.configuration['host']
+                Jekyll.configuration['host'] + ':' + Jekyll.configuration['port']
             end
         end
         def self.base_url
