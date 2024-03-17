@@ -7,8 +7,6 @@ Currently uses the `url` and `baseurl` properties to generate the resource urls.
 ## How it works
 Heavily borrowed from the `importmap-rails` gem (a lot of parts copied), minus the `rails` parts and simplified to make a lot easier to understand.
 
-## Usage
-To be continued...
 
 ### Setup
 Add to `Gemfile` via bundler
@@ -31,8 +29,67 @@ Add to your layout
 ...
 ```
 
+Create your importmap.rb file in the root directory
+```ruby
+pin 'application', to: 'assets/js/application.js'
+```
+
 ### Importmap config
-To be continued...
+Uses the exact same syntax as the `importmap-rails` gem.
+
+## Usage
+This plugin creates a javascript importmap and also an import statement that looks for a module called `application`.
+Make sure that you have added this to your importmap. This is the entry point of your application and you can import everything from here.
+```ruby
+pin 'application', to: 'assets/js/application.js'
+```
+
+### Example for StimulusJS
+```ruby
+# importmap.rb
+
+```
+
+```javascript
+// assets/js/application.js
+import 'controllers'
+```
+
+```javascript
+// assets/js/controllers/index.js
+import { Application } from "@hotwired/stimulus"
+import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+import Flatpickr from 'stimulus-flatpickr'
+
+const application = Application.start()
+application.register('flatpickr', Flatpickr)
+
+// Configure Stimulus development experience
+application.debug = false
+window.Stimulus   = application
+eagerLoadControllersFrom("controllers", application)
+```
+
+```javascript
+// assets/js/controllers/flatpickr-controller.js
+import { Controller } from "@hotwired/stimulus"
+import Flatpickr from 'stimulus-flatpickr'
+
+// Connects to data-controller="flatpickr"
+export default class extends Flatpickr {
+  connect() {
+    this.config = {
+      plugins: [],
+      enableTime: true,
+    }
+    super.connect()
+  }
+}
+```
+
+```html
+<div data-controller="flatpickr"></div>
+```
 
 ## Contributing
 You're actively encouraged to create issues and pull requests.
