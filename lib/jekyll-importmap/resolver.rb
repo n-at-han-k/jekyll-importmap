@@ -20,16 +20,17 @@ module Jekyll::Importmap
                 ''
             end
         end
-        def self.port
-            if Jekyll.configuration['port'] && Jekyll.configuration['port'].length > 0
-                ':' + Jekyll.configuration['port']
-            else
-                ''
-            end
-        end
+        #def self.port
+            #if Jekyll.configuration['port'] && Jekyll.configuration['port'].length > 0
+                #':' + Jekyll.configuration['port']
+            #else
+                #''
+            #end
+        #end
 
         def self.url
-            self.host_or_url + self.port + self.base_url
+            #self.host_or_url + self.port + self.base_url
+            self.host_or_url + self.base_url
         end
     end
 end
