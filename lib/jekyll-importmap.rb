@@ -30,9 +30,9 @@ module Jekyll
 
             def import_map_tags(entry_point, importmap)
                 [
+                    es_module_shim_tag,
                     inline_importmap_tags,
                     importmap_module_preload_tags,
-                    es_module_shim_tag,
                     import_module_tag
                 ].join('')
             end
@@ -51,7 +51,7 @@ module Jekyll
                 "<script type='module'>#{imports}</script>"
             end
             def es_module_shim_tag
-                "<script src='#{ES_MODULE_SHIM}' async='async'></script>"
+                "<script async src='#{ES_MODULE_SHIM}'></script>"
             end
     end
 end
