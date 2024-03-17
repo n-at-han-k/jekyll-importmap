@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    jekyll-importmap (0.0.7)
-      importmap-rails
+    jekyll-importmap (0.1.2)
+      importmap-rails (~> 2.0.1)
       jekyll (>= 3.8, < 5.0)
 
 GEM

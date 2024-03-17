@@ -18,7 +18,7 @@ module Jekyll
             super
             #root_path = Pathname.new(Jekyll.configuration['source']) + '/'
             root_path = Dir.pwd + '/'
-            @importmap = Jekyll::Importmap::Map.new.draw(root_path.join(IMPORTMAP_PATH))
+            @importmap = Jekyll::Importmap::Map.new.draw(root_path.concat(IMPORTMAP_PATH))
             @entry_point = "application"
         end
 
