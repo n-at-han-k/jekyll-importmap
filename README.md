@@ -31,7 +31,7 @@ Add to your layout
 
 Create your importmap.rb file in the root directory
 ```ruby
-pin 'application', to: 'assets/js/application.js'
+pin 'application', to: 'assets/js/application.js', preload: true
 ```
 
 ### Importmap config
@@ -41,16 +41,16 @@ Uses the exact same syntax as the `importmap-rails` gem.
 This plugin creates a javascript importmap and also an import statement that looks for a module called `application`.
 Make sure that you have added this to your importmap. This is the entry point of your application and you can import everything from here.
 ```ruby
-pin 'application', to: 'assets/js/application.js'
+pin 'application', to: 'assets/js/application.js', preload: true
 ```
 
 ### Example for StimulusJS
 #### importmap.rb
 ```ruby
-pin 'application', to: 'assets/js/application.js'
-pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js"
+pin 'application', to: 'assets/js/application.js', preload: true
+pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js", preload: true
 pin "@hotwired/stimulus-loading", to: "assets/js/stimulus-loading.js", preload: true
-pin_all_from "assets/js/controllers", under: "controllers"
+pin_all_from "assets/js/controllers", under: "controllers", preload: true
 ```
 
 #### assets/js/application.js
