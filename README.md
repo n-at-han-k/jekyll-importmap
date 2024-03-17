@@ -44,13 +44,18 @@ Make sure that you have added this to your importmap. This is the entry point of
 pin 'application', to: 'assets/js/application.js', preload: true
 ```
 
+And don't forget to specify `to` and `under` when using `pin_all_from`
+```ruby
+pin_all_from "assets/js/controllers", to: "assets/js/controllers", under: "controllers"
+```
+
 ### Example for StimulusJS
 #### importmap.rb
 ```ruby
 pin 'application', to: 'assets/js/application.js', preload: true
 pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js", preload: true
 pin "@hotwired/stimulus-loading", to: "assets/js/stimulus-loading.js", preload: true
-pin_all_from "assets/js/controllers", under: "controllers", preload: true
+pin_all_from "assets/js/controllers", to: "assets/js/controllers", under: "controllers", preload: true
 ```
 
 #### assets/js/application.js
