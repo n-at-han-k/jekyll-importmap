@@ -1,11 +1,11 @@
-
-![#f03c15](https://placehold.co/600x50/ffffff/ff0000?text=CURRENTLY+IN+DEVELOPMENT)
-
 # jekyll-importmap
 A plugin that implementing importmaps for jekyll
 
+## KNOWN ISSUE
+Currently uses the `url` and `baseurl` properties to generate the resource urls. This means that you must follow a workaround during development. [See more information on the workaround here](i1)
+
 ## How it works
-Heavily borrowed from the `importmap-rails` gem (basically copied), minus the `rails` parts.
+Heavily borrowed from the `importmap-rails` gem (a lot of parts copied), minus the `rails` parts and simplified to make a lot easier to understand.
 
 ## Usage
 To be continued...
