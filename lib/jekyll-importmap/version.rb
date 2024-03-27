@@ -5,6 +5,6 @@ module Liquid; class Tag; end; end
 
 module Jekyll
   class ImportmapTag < Liquid::Tag
-    VERSION = "0.2.0"
+    VERSION = "0.2.2"
   end
 end

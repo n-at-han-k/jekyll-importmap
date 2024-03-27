@@ -1,5 +1,5 @@
 module Jekyll::Importmap
-    JS_PATH = '/'
+    JS_PATH = ''
 
     class Resolver
         def self.path_to_asset(path)
@@ -8,15 +8,15 @@ module Jekyll::Importmap
         end
 
         def self.host_or_url
-            if Jekyll.configuration['url']
+            if Jekyll.configuration['importmap'] && Jekyll.configuration['importmap']['devhost']
+                Jekyll.configuration['importmap']['devhost']
+            else Jekyll.configuration['url']
                 Jekyll.configuration['url']
-            else
-                'https://' + Jekyll.configuration['host'] + ':' + Jekyll.configuration['port']
             end
         end
         def self.base_url
             if Jekyll.configuration['baseurl']
-                '/' + Jekyll.configuration['baseurl']
+                Jekyll.configuration['baseurl']
             else
                 ''
             end
