@@ -4,14 +4,14 @@ module Jekyll::Importmap
     class Resolver
         def self.path_to_asset(path)
             return path if path.start_with?('http') 
-            'https://' self.url + JS_PATH + path
+            self.url + JS_PATH + path
         end
 
         def self.host_or_url
             if Jekyll.configuration['importmap'] && Jekyll.configuration['importmap']['devurl']
                 Jekyll.configuration['importmap']['devurl']
             else Jekyll.configuration['url']
-                Jekyll.configuration['url']
+                'https://' + Jekyll.configuration['url']
             end
         end
         def self.base_url
