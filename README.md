@@ -1,14 +1,13 @@
 # jekyll-importmap
 A plugin that implementing importmaps for jekyll
 
-## KNOWN ISSUE
-Currently uses the `url` and `baseurl` properties to generate the resource urls. This means that you must follow a workaround during development. [See more information on the workaround here](i1)
 
 ## How it works
 Heavily borrowed from the `importmap-rails` gem (a lot of parts copied), minus the `rails` parts and simplified to make a lot easier to understand.
 
 
 ### Setup
+
 Add to `Gemfile` via bundler
 ```sh
 bundle add jekyll-importmap
@@ -32,6 +31,19 @@ Add to your layout
 Create your importmap.rb file in the root directory
 ```ruby
 pin 'application', to: 'assets/js/application.js', preload: true
+```
+
+### During Development
+During development you must set a url to use as an override instead of using `url` and `baseurl`
+```yaml
+importmap:
+  devurl: 'https://127.0.0.1:4000/jekyll-importmap'
+```
+
+When committing to production comment it out!
+```yaml
+# importmap:
+    devurl: 'https://127.0.0.1:4000/jekyll-importmap'
 ```
 
 ### Importmap config
