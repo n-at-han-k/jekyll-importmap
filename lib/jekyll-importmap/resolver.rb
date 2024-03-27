@@ -11,7 +11,7 @@ module Jekyll::Importmap
             if Jekyll.configuration['importmap'] && Jekyll.configuration['importmap']['devhost']
                 Jekyll.configuration['importmap']['devhost']
             else Jekyll.configuration['url']
-                Jekyll.configuration['url']
+                'https://' + Jekyll.configuration['url']
             end
         end
         def self.base_url
