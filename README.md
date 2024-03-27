@@ -43,7 +43,7 @@ importmap:
 When committing to production comment it out!
 ```yaml
 # importmap:
-    devurl: 'https://127.0.0.1:4000/jekyll-importmap'
+#   devurl: 'https://127.0.0.1:4000/jekyll-importmap'
 ```
 
 ### Importmap config
