@@ -5,7 +5,7 @@ require "jekyll-importmap/mapped_dir"
 require "jekyll-importmap/mapped_file"
 require "jekyll-importmap/mappable"
 require "jekyll-importmap/resolver"
-require "importmap-rails"
+#require "importmap-rails"
 
 module Jekyll
     module Importmap; end
