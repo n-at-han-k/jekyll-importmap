@@ -1,5 +1,5 @@
 module Jekyll::Importmap
-    JS_PATH = ''
+    JS_PATH = '/'
 
     class Resolver
         def self.path_to_asset(path)
