@@ -8,7 +8,7 @@ module Jekyll::Importmap
         end
 
         def self.host_or_url
-            if Jekyll.configuration['importmap'] && Jekyll.configuration['importmap']['devhost']
+            if Jekyll.configuration['importmap'] && Jekyll.configuration['importmap']['devurl']
                 Jekyll.configuration['importmap']['devurl']
             else Jekyll.configuration['url']
                 'https://' + Jekyll.configuration['url']
