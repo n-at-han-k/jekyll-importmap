@@ -1,4 +1,6 @@
 # jekyll-importmap
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/n-at-han-k/jekyll-importmap)
 A plugin that implementing importmaps for jekyll
 
 
